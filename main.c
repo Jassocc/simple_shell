@@ -13,10 +13,11 @@ int main(int ac, char **argv)
 	size_t n = 0;
 	ssize_t nc_read;
 	const char *d;
-	char *t;
+	char *t, *arg[MAX_INPUT_SIZE];
 	int a;
 
 	(void)ac;
+	(void)argv;
 	d = " \n";
 
 	while (1)
@@ -28,20 +29,16 @@ int main(int ac, char **argv)
 				my_printf("Exiting...\n");
 				return (0);
 			}
-		argv = malloc(sizeof(char *) * MAX_INPUT_SIZE);
 		t = strtok(line, d);
-		for (a = 0; t != NULL; a++)
+		a = 0;
+		while (t != NULL && a < MAX_INPUT_SIZE - 1)
 		{
-			argv[a] = malloc(custom_strlen(t) + 1);
-			strcopy(argv[a], t);
+			arg[a] = t;
+			a++;
 			t = strtok(NULL, d);
 		}
-		argv[a] = NULL;
-		execute_cmd(argv[0]);
-		for (a = 0; argv[a] != NULL; a++)
-		{	free(argv[a]);
-		}
-		free(argv);
+		arg[a] = NULL;
+		execute_cmd(arg);
 		if (line != NULL)
 		{	free(line);
 			line = NULL;
