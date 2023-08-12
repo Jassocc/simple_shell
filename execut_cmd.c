@@ -6,7 +6,7 @@
  */
 void execute_cmd(char *command[])
 {
-	char *cmd_path[MAX_INPUT_SIZE];
+	char cmd_path[MAX_INPUT_SIZE];
 
 	_stringcat(cmd_path, sizeof(cmd_path), "/usr/bin/");
 	_stringcat(cmd_path, sizeof(cmd_path), command[0]);
