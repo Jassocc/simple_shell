@@ -38,7 +38,17 @@ int main(int ac, char **argv)
 			t = strtok(NULL, d);
 		}
 		arg[a] = NULL;
-		execute_cmd(arg, custom_getenv);
+		if (arg[0] != NULL)
+		{
+			if (custom_strncmp(arg[0], "exit", 4) == 0)
+			{
+				exit_builtin(arg);
+			}
+			else
+			{
+				execute_cmd(arg, custom_getenv);
+			}
+		}
 		if (line != NULL)
 		{	free(line);
 			line = NULL;
