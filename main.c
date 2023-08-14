@@ -12,41 +12,33 @@ int main(int ac, char **argv)
 	char *line;
 	size_t n = 0;
 	ssize_t nc_read;
-	const char *d;
+	const char *d = " \n";
 	char *t, *arg[MAX_INPUT_SIZE];
 	int a;
 
-	(void)ac;
-	(void)argv;
-	d = " \n";
+	(void)ac, (void)argv;
 
 	while (1)
-	{
-		my_printf("%s", prompt);
+	{	my_printf("%s", prompt);
 		nc_read = getline(&line, &n, stdin);
 			if (nc_read == -1)
-			{
-				my_printf("Exiting...\n");
+			{	my_printf("Exiting...\n");
 				return (0);
 			}
 		t = strtok(line, d);
 		a = 0;
 		while (t != NULL && a < MAX_INPUT_SIZE - 1)
-		{
-			arg[a] = t;
+		{	arg[a] = t;
 			a++;
-			t = strtok(NULL, d);
-		}
+			t = strtok(NULL, d);	}
 		arg[a] = NULL;
 		if (arg[0] != NULL)
 		{
 			if (custom_strncmp(arg[0], "exit", 4) == 0)
-			{
-				exit_builtin(arg);
+			{	exit_builtin(arg);
 			}
 			else
-			{
-				execute_cmd(arg, custom_getenv);
+			{	execute_cmd(arg, custom_getenv);
 			}
 		}
 		if (line != NULL)

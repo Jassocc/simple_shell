@@ -3,6 +3,7 @@
 /**
  * execute_cmd - executes command from user input
  * @command: cmd to be executed
+ * @custom_getenv: custom getenv
  */
 void execute_cmd(char *command[], char *(*custom_getenv)(const char *))
 {
@@ -15,9 +16,9 @@ void execute_cmd(char *command[], char *(*custom_getenv)(const char *))
 		perror("Error: PATH environment variable not set");
 		return;
 	}
-	 if (command[0][0] == '/')
-        {
-        	execute_absolute_path(command);
+	if (command[0][0] == '/')
+	{
+		execute_absolute_path(command);
 		return;
 	}
 	path_cpy = c_strdup(path);
@@ -44,8 +45,7 @@ void execute_cmd(char *command[], char *(*custom_getenv)(const char *))
 			return;
 		}
 		token = strtok(NULL, ":");
-	}
-	free(path_cpy);
+	} free(path_cpy);
 	my_printf("Command not found: %s\n", command[0]);
 }
 /**

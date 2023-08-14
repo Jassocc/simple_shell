@@ -8,6 +8,7 @@
 #include <stdarg.h>
 #include <sys/wait.h>
 #define MAX_INPUT_SIZE 256
+extern char **environ;
 
 void my_puts(const char *str);
 void my_printf(const char *format, ...);
