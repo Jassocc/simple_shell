@@ -4,10 +4,10 @@
  * execute_cmd - executes command from user input
  * @command: cmd to be executed
  */
-void execute_cmd(char *command[])
+void execute_cmd(char *command[], char *(*custom_getenv)(const char *))
 {
 	char cmd_path[MAX_INPUT_SIZE];
-	char *path = getenv("PATH");
+	char *path = custom_getenv("PATH");
 	char *path_cpy, *token;
 
 	if (!path)

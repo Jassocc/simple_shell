@@ -38,7 +38,7 @@ int main(int ac, char **argv)
 			t = strtok(NULL, d);
 		}
 		arg[a] = NULL;
-		execute_cmd(arg);
+		execute_cmd(arg, custom_getenv);
 		if (line != NULL)
 		{	free(line);
 			line = NULL;
