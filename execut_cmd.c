@@ -7,18 +7,40 @@
 void execute_cmd(char *command[])
 {
 	char cmd_path[MAX_INPUT_SIZE];
+	char *path = getenv("PATH");
+	char *path_cpy, *token;
 
-	_stringcat(cmd_path, sizeof(cmd_path), "/usr/bin/");
-	_stringcat(cmd_path, sizeof(cmd_path), command[0]);
-
-	if (fork() == 0)
+	if (!path)
 	{
-		execve(cmd_path, command, NULL);
-		perror("Error");
-		_exit(EXIT_FAILURE);
+		perror("Error: PATH environment variable not set");
+		return;
 	}
-	else
+	path_cpy = c_strdup(path);
+	token = strtok(path_cpy, ":");
+	while (token != NULL)
 	{
-		wait(NULL);
+		cmd_path[0] = '\0';
+		_stringcat(cmd_path, sizeof(cmd_path), token);
+		_stringcat(cmd_path, sizeof(cmd_path), "/");
+		_stringcat(cmd_path, sizeof(cmd_path), command[0]);
+		printf("Trying command: %s\n", cmd_path);
+		if (access(cmd_path, X_OK) == 0)
+		{
+			if (fork() == 0)
+			{
+				execve(cmd_path, command, NULL);
+				perror("Error");
+				_exit(EXIT_FAILURE);
+			}
+			else
+			{
+				wait(NULL);
+			}
+			free(path_cpy);
+			return;
+		}
+		token = strtok(NULL, ":");
 	}
+	free(path_cpy);
+	my_printf("Command not found: %s\n", command[0]);
 }

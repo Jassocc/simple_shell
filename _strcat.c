@@ -11,13 +11,12 @@
 size_t _stringcat(char *d, size_t d_size, const char *sr)
 {
 	size_t d_length = custom_strlen(d);
-	size_t sr_length = custom_strlen(sr);
-	size_t i, j;
+	size_t i;
 
-	for (i = 0, j = 0; j < sr_length && i < d_size - 1; i++, j++)
+	for (i = 0; sr[i] != '\0' && d_length < d_size - 1; i++, d_length++)
 	{
-		d[i] = sr[j];
+		d[d_length] = sr[i];
 	}
-	d[i] = '\0';
-	return (d_length + sr_length);
+	d[d_length] = '\0';
+	return (d_length);
 }

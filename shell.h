@@ -15,5 +15,6 @@ void execute_cmd(char *command[]);
 size_t _stringcat(char *d, size_t d_size, const char *sr);
 size_t custom_strlen(const char *str);
 char *strcopy(char *d, const char *s);
+char *c_strdup(const char *str);
 
 #endif
