@@ -28,7 +28,6 @@ void execute_cmd(char *command[])
 		_stringcat(cmd_path, sizeof(cmd_path), token);
 		_stringcat(cmd_path, sizeof(cmd_path), "/");
 		_stringcat(cmd_path, sizeof(cmd_path), command[0]);
-		printf("Trying command: %s\n", cmd_path);
 		if (access(cmd_path, X_OK) == 0)
 		{
 			if (fork() == 0)
