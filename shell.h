@@ -21,5 +21,6 @@ void execute_absolute_path(char *command[]);
 char *custom_getenv(const char *name);
 int custom_strncmp(const char *str1, const char *str2, size_t n);
 void exit_builtin(char *command[]);
+char custom_envbuiltin(char *command[], char **env);
 
 #endif

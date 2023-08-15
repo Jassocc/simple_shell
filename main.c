@@ -4,9 +4,10 @@
  * main - main function for the shell
  * @ac: void
  * @argv: vector for arguments
+ * @env: environment var
  * Return: 0 if succes, -1 if fail
  */
-int main(int ac, char **argv)
+int main(int ac, char **argv, char **env)
 {
 	char *prompt = "$ ";
 	char *line;
@@ -17,7 +18,6 @@ int main(int ac, char **argv)
 	int a;
 
 	(void)ac, (void)argv;
-
 	while (1)
 	{	my_printf("%s", prompt);
 		nc_read = getline(&line, &n, stdin);
@@ -34,7 +34,10 @@ int main(int ac, char **argv)
 		arg[a] = NULL;
 		if (arg[0] != NULL)
 		{
-			if (custom_strncmp(arg[0], "exit", 4) == 0)
+			if (custom_strncmp(arg[0], "env", 3) == 0)
+			{	custom_envbuiltin(arg, env);
+			}
+			else if (custom_strncmp(arg[0], "exit", 4) == 0)
 			{	exit_builtin(arg);
 			}
 			else
@@ -43,8 +46,7 @@ int main(int ac, char **argv)
 		}
 		if (line != NULL)
 		{	free(line);
-			line = NULL;
-		}
+			line = NULL; }
 	}
 	return (0);
 }
