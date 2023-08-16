@@ -9,8 +9,7 @@
  */
 int main(int ac, char **argv, char **env)
 {
-	char *prompt = "$ ";
-	char *line;
+	char *prompt = "$ ", *line = NULL;
 	size_t n = 0;
 	ssize_t nc_read;
 	const char *d = " \n";
@@ -23,6 +22,7 @@ int main(int ac, char **argv, char **env)
 		nc_read = getline(&line, &n, stdin);
 			if (nc_read == -1)
 			{	my_printf("Exiting...\n");
+				free(line);
 				return (0);
 			}
 		t = strtok(line, d);
