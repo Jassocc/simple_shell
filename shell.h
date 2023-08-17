@@ -23,5 +23,6 @@ int custom_strncmp(const char *str1, const char *str2, size_t n);
 void exit_builtin(char *command[]);
 char custom_envbuiltin(char *command[], char **env);
 void custom_memcpy(void *des, const void *sr, size_t n);
+void *custom_realloc(void *p, size_t size);
 
 #endif
