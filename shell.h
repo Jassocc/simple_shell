@@ -24,5 +24,6 @@ void exit_builtin(char *command[]);
 char custom_envbuiltin(char *command[], char **env);
 void custom_memcpy(void *des, const void *sr, size_t n);
 void *custom_realloc(void *p, size_t size);
+ssize_t custom_getline(char **linep, size_t *n, FILE *stream);
 
 #endif
