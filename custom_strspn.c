@@ -3,7 +3,7 @@
 /**
  * custom_strspn - custom implementation of strspn
  * @s: string to search
- * @charset: chars to search
+ * @chset: chars to search
  * Return: length
  */
 size_t custom_strspn(const char *s, const char *chset)

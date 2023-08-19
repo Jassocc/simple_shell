@@ -8,7 +8,7 @@
  */
 char *custom_strtok(char *s, const char *del)
 {
-	static char *savep = NULL;
+	static char *savep;
 	char *tok, *next;
 
 	if (s == NULL)

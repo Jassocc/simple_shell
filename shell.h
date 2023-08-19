@@ -29,5 +29,6 @@ size_t custom_strspn(const char *s, const char *chset);
 char *custom_strchr(const char *s, int ch);
 char *custom_strpbrk(const char *s, const char *chset);
 char *custom_strtok(char *s, const char *del);
+int custom_atoi(const char *s);
 
 #endif
