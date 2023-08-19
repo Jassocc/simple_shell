@@ -25,5 +25,8 @@ char custom_envbuiltin(char *command[], char **env);
 void custom_memcpy(void *des, const void *sr, size_t n);
 void *custom_realloc(void *p, size_t size);
 ssize_t custom_getline(char **linep, size_t *n, FILE *stream);
+size_t custom_strspn(const char *s, const char *chset);
+char *custom_strchr(const char *s, int ch);
+char *custom_strpbrk(const char *s, const char *chset);
 
 #endif
