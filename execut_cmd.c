@@ -22,7 +22,7 @@ void execute_cmd(char *command[], char *(*custom_getenv)(const char *))
 		return;
 	}
 	path_cpy = c_strdup(path);
-	token = strtok(path_cpy, ":");
+	token = custom_strtok(path_cpy, ":");
 	while (token != NULL)
 	{
 		cmd_path[0] = '\0';
@@ -44,7 +44,7 @@ void execute_cmd(char *command[], char *(*custom_getenv)(const char *))
 			free(path_cpy);
 			return;
 		}
-		token = strtok(NULL, ":");
+		token = custom_strtok(NULL, ":");
 	} free(path_cpy);
 	my_printf("Command not found: %s\n", command[0]);
 }

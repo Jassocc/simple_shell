@@ -25,12 +25,12 @@ int main(int ac, char **argv, char **env)
 				free(line);
 				return (0);
 			}
-		t = strtok(line, d);
+		t = custom_strtok(line, d);
 		a = 0;
 		while (t != NULL && a < MAX_INPUT_SIZE - 1)
 		{	arg[a] = t;
 			a++;
-			t = strtok(NULL, d);	}
+			t = custom_strtok(NULL, d);	}
 		arg[a] = NULL;
 		if (arg[0] != NULL)
 		{
