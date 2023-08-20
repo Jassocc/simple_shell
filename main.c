@@ -40,6 +40,14 @@ int main(int ac, char **argv, char **env)
 			else if (custom_strncmp(arg[0], "exit", 4) == 0)
 			{	exit_builtin(arg);
 			}
+			else  if (custom_strncmp(arg[0], "setenv", 6) == 0)
+			{
+				execute_setenv(arg);
+			}
+			else if (custom_strncmp(arg[0], "unsetenv", 8) == 0)
+			{
+				execute_unsetenv(arg);
+			}
 			else
 			{	execute_cmd(arg, custom_getenv);
 			}

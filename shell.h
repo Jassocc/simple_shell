@@ -30,5 +30,7 @@ char *custom_strchr(const char *s, int ch);
 char *custom_strpbrk(const char *s, const char *chset);
 char *custom_strtok(char *s, const char *del);
 int custom_atoi(const char *s);
+int custom_setenv(const char *name, const char *value, int overw);
+int custom_unsetenv(const char *name);
 
 #endif
