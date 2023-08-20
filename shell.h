@@ -32,5 +32,7 @@ char *custom_strtok(char *s, const char *del);
 int custom_atoi(const char *s);
 int custom_setenv(const char *name, const char *value, int overw);
 int custom_unsetenv(const char *name);
+int execute_setenv(char *args[]);
+int execute_unsetenv(char *args[]);
 
 #endif
