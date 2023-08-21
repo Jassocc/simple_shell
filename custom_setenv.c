@@ -44,9 +44,14 @@ int custom_setenv(const char *name, const char *value, int overw)
 	if (env_entry == NULL)
 	{
 		printf("Failed to Allocate MEmory for env_entry: 2\n");
-		free(env_entry);
 		return (-1);
 	}
+	if (*env_p != NULL) 
+	{
+		free(*env_p);
+		*env_p = env_entry; }
+	else
+	{
 	env_count = 0;
 	while (environ[env_count] != NULL)
 		env_count++;
@@ -62,6 +67,7 @@ int custom_setenv(const char *name, const char *value, int overw)
 	new_env[env_count] = env_entry;
 	new_env[env_count + 1] = NULL;
 	environ = new_env;
+	}
 	return (0);
 }
 /**

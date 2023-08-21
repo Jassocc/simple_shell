@@ -1,14 +1,14 @@
 #include "shell.h"
 
 /**
- * cuplicate_environment - duplicates env
+ * duplicate_environment - duplicates env
  * @src_env: source env
  * Return: duplicated env
  */
 char **duplicate_environment(char **src_env)
 {
 	int num_var = 0, i, j;
-	char ** duplicate = NULL;
+	char **duplicate = NULL;
 
 	while (src_env[num_var] != NULL)
 	{
@@ -22,7 +22,7 @@ char **duplicate_environment(char **src_env)
 	for (i = 0; i < num_var; i++)
 	{
 		duplicate[i] = c_strdup(src_env[i]);
-		if (duplicate [i] == NULL)
+		if (duplicate[i] == NULL)
 		{
 			for (j = 0; j < i; j++)
 			{
@@ -37,15 +37,15 @@ char **duplicate_environment(char **src_env)
 }
 /**
  * create_env_entry - creation of env variable
- * @name: name of env variable
- * @value: value of env variable
- * @name_len: length of name
- * @value_len: length of value
+ * @n: name of env variable
+ * @v: value of env variable
+ * @n_le: length of name
+ * @v_le: length of value
  * Return: entry
  */
-char *create_env_entry(const char *name, const char *value, size_t name_len, size_t value_len)
+char *create_env_entry(const char *n, const char *v, size_t n_le, size_t v_le)
 {
-	size_t entry_len = name_len + 1 + value_len + 1;
+	size_t entry_len = n_le + 1 + v_le + 1;
 	char *entry;
 	size_t pos, i;
 
@@ -55,14 +55,14 @@ char *create_env_entry(const char *name, const char *value, size_t name_len, siz
 		return (NULL);
 	}
 	pos = 0;
-	for (i = 0; i < name_len; i++)
+	for (i = 0; i < n_le; i++)
 	{
-		entry[pos++] = name[i];
+		entry[pos++] = n[i];
 	}
 	entry[pos++] = '=';
-	for (i = 0; i < value_len; i++)
+	for (i = 0; i < v_le; i++)
 	{
-		entry[pos++] = value[i];
+		entry[pos++] = v[i];
 	}
 	entry[pos] = '\0';
 	return (entry);
@@ -88,23 +88,23 @@ void free_environment(char **env)
 /**
  * update_or_add_env - modifies or adds to a env
  * @env: environment variable
- * @new_entry: entry for env variable
- * @name_len: length of name
- * @overw: overwrite function
+ * @n_en: entry for env variable
+ * @n_len: length of name
+ * @o: overwrite function
  */
-void update_or_add_env(char **env, const char *new_entry, size_t name_len, int overw)
+void update_or_add_env(char **env, const char *n_en, size_t n_len, int o)
 {
 	size_t env_count = 0;
-	
+
 	while (env[env_count] != NULL)
 	{
-		if (custom_strncmp(env[env_count], new_entry, name_len) == 0 &&
-				env[env_count][name_len] == '=')
+		if (custom_strncmp(env[env_count], n_en, n_len) == 0 &&
+				env[env_count][n_len] == '=')
 		{
-			if (overw)
+			if (o)
 			{
 				free(env[env_count]);
-				env[env_count] = c_strdup(new_entry);
+				env[env_count] = c_strdup(n_en);
 				return;
 			}
 			else
@@ -114,6 +114,6 @@ void update_or_add_env(char **env, const char *new_entry, size_t name_len, int o
 		}
 		env_count++;
 	}
-	env[env_count] = c_strdup(new_entry);
+	env[env_count] = c_strdup(n_en);
 	env[env_count + 1] = NULL;
 }

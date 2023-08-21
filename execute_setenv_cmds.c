@@ -33,6 +33,7 @@ int execute_setenv(char *args[])
 int execute_unsetenv(char *args[])
 {
 	int result;
+
 	if (args[1] != NULL && args[2] == NULL)
 	{
 		result = custom_unsetenv(args[1]);

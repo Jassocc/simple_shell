@@ -1,5 +1,4 @@
 #include "shell.h"
-
 /**
  * main - main function for the shell
  * @ac: void
@@ -14,16 +13,16 @@ int main(int ac, char **argv, char **env)
 	ssize_t nc_read;
 	const char *d = " \n";
 	char *t, *arg[MAX_INPUT_SIZE];
-	int a;
+	int a, should_exit = 0, *should_exit_ptr = &should_exit;
 
 	(void)ac, (void)argv;
-	while (1)
+	while (!(*should_exit_ptr))
 	{	my_printf("%s", prompt);
 		nc_read = custom_getline(&line, &n, stdin);
 			if (nc_read == -1)
 			{	my_printf("Exiting...\n");
 				free(line);
-				return (0);
+				break;
 			}
 		t = custom_strtok(line, d);
 		a = 0;
@@ -38,7 +37,8 @@ int main(int ac, char **argv, char **env)
 			{	custom_envbuiltin(arg, env);
 			}
 			else if (custom_strncmp(arg[0], "exit", 4) == 0)
-			{	exit_builtin(arg);
+			{
+				exit_builtin(arg, should_exit_ptr);
 			}
 			else  if (custom_strncmp(arg[0], "setenv", 6) == 0)
 			{
@@ -55,6 +55,6 @@ int main(int ac, char **argv, char **env)
 		if (line != NULL)
 		{	free(line);
 			line = NULL; }
-	}
+	} exit_shell(should_exit_ptr);
 	return (0);
 }

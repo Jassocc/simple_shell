@@ -9,6 +9,7 @@
 #include <sys/wait.h>
 #define MAX_INPUT_SIZE 1024
 extern char **environ;
+extern int exit_shell(int *should_exit_ptr);
 
 void my_puts(const char *str);
 void my_printf(const char *format, ...);
@@ -20,7 +21,7 @@ char *c_strdup(const char *str);
 void execute_absolute_path(char *command[]);
 char *custom_getenv(const char *name);
 int custom_strncmp(const char *str1, const char *str2, size_t n);
-void exit_builtin(char *command[]);
+void exit_builtin(char *command[], int *should_exit_ptr);
 char custom_envbuiltin(char *command[], char **env);
 void custom_memcpy(void *des, const void *sr, size_t n);
 void *custom_realloc(void *p, size_t size);
@@ -35,9 +36,10 @@ int custom_unsetenv(const char *name);
 int execute_setenv(char *args[]);
 int execute_unsetenv(char *args[]);
 int set_custom_env(const char *name, const char *value, int overw);
-void update_or_add_env(char **env, const char *new_entry, size_t name_len, int overw);
+void update_or_add_env(char **env, const char *n_en, size_t n_len, int o);
 void free_environment(char **env);
-char *create_env_entry(const char *name, const char *value, size_t name_len, size_t value_len);
+char *create_env_entry(const char *n, const char *v, size_t n_le, size_t v_le);
 char **duplicate_environment(char **src_env);
+
 
 #endif
