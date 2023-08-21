@@ -41,6 +41,7 @@ int execute_unsetenv(char *args[])
 			perror("unsetenv failed");
 			return (-1);
 		}
+		return (0);
 	}
 	else
 	{

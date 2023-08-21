@@ -24,7 +24,7 @@ ssize_t custom_getline(char **linep, size_t *n, FILE *stream)
 			return (-1);
 		}
 		custom_memcpy(*linep + size, buffer, i + 1);
-		size = size + i;
+		size = size + i + 1;
 		for (j = 0; j < i; j++)
 		{
 			if (buffer[j] == '\n')

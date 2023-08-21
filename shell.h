@@ -34,5 +34,10 @@ int custom_setenv(const char *name, const char *value, int overw);
 int custom_unsetenv(const char *name);
 int execute_setenv(char *args[]);
 int execute_unsetenv(char *args[]);
+int set_custom_env(const char *name, const char *value, int overw);
+void update_or_add_env(char **env, const char *new_entry, size_t name_len, int overw);
+void free_environment(char **env);
+char *create_env_entry(const char *name, const char *value, size_t name_len, size_t value_len);
+char **duplicate_environment(char **src_env);
 
 #endif

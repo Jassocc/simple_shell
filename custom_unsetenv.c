@@ -7,19 +7,19 @@
  */
 int custom_unsetenv(const char *name)
 {
-	size_t name_len = custom_strlen(name);
-	int i, j;
+	int i;
 
 	for (i = 0; environ[i] != NULL; i++)
 	{
-		if (custom_strncmp(environ[i], name, name_len) == 0 &&
-				environ[i][name_len] == '=')
+		if (custom_strncmp(environ[i], name, custom_strlen(name)) == 0)
 		{
 			free(environ[i]);
-			for (j = i; environ[j] != NULL; j++)
+			while (environ[i + 1] != NULL)
 			{
-				environ[j] = environ[j + 1];
+				environ[i] = environ[i + 1];
+				i++;
 			}
+			environ[i] = NULL;
 			return (0);
 		}
 	}
