@@ -36,7 +36,7 @@ char *custom_strchr(const char *s, int ch);
 char *custom_strpbrk(const char *s, const char *chset);
 char *custom_strtok(char *s, const char *del);
 int custom_atoi(const char *s);
-int custom_setenv(const char *name, const char *value, int overw);
+/*int custom_setenv(const char *name, const char *value, int overw);
 int custom_unsetenv(const char *name);
 int execute_setenv(char *args[]);
 int execute_unsetenv(char *args[]);
@@ -44,7 +44,7 @@ int set_custom_env(const char *name, const char *value, int overw);
 void update_or_add_env(char **env, const char *n_en, size_t n_len, int o);
 void free_environment(char **env);
 char *create_env_entry(const char *n, const char *v, size_t n_le, size_t v_le);
-char **duplicate_environment(char **src_env);
+char **duplicate_environment(char **src_env);*/
 
 
 #endif
