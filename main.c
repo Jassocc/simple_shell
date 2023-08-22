@@ -20,7 +20,7 @@ int main(int ac, char **argv, char **env)
 	{	my_printf("%s", prompt);
 		nc_read = custom_getline(&line, &n, stdin);
 			if (nc_read == -1)
-			{	my_printf("Exiting...\n");
+			{
 				free(line);
 				break;
 			}
