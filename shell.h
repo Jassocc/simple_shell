@@ -10,6 +10,11 @@
 #define MAX_INPUT_SIZE 1024
 extern char **environ;
 extern int exit_shell(int *should_exit_ptr);
+struct EnvNode {
+	char *name;
+	char *value;
+	struct ENVNODE *next;
+};
 
 void my_puts(const char *str);
 void my_printf(const char *format, ...);

@@ -16,7 +16,7 @@ int main(int ac, char **argv, char **env)
 	int a, should_exit = 0, *should_exit_ptr = &should_exit;
 
 	(void)ac, (void)argv;
-	while (!(*should_exit_ptr))
+	while (1/*!(*should_exit_ptr)*/)
 	{	my_printf("%s", prompt);
 		nc_read = custom_getline(&line, &n, stdin);
 			if (nc_read == -1)
@@ -55,6 +55,6 @@ int main(int ac, char **argv, char **env)
 		if (line != NULL)
 		{	free(line);
 			line = NULL; }
-	} exit_shell(should_exit_ptr);
+	} /*exit_shell(should_exit_ptr)*/;
 	return (0);
 }
