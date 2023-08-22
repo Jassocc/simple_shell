@@ -17,13 +17,11 @@ void exit_builtin(char *command[], int *should_exit_ptr)
 			perror("Invalid exit status");
 			return;
 		}
-		my_printf("Exititng...\n");
 		exit_shell(should_exit_ptr);
 		exit(status);
 	}
 	else
 	{
-		my_printf("Exiting...\n");
 		/*/exit(0);*/
 	exit_shell(should_exit_ptr);
 	}
