@@ -7,8 +7,9 @@
  */
 size_t custom_getline(char **streamer)
 {
-	ssize_t a = 0, s = 0, tok1 = 0, tok2 = 0, numbo = 0;
-	char buffer[1024];
+	ssize_t a = 0, tok1 = 0, tok2 = 0, numbo = 0;
+	static char buffer[1024];
+	static ssize_t buff_s = 0;
 
 	while (tok2 == 0 && (a = read(STDIN_FILENO, buffer, 1024 - 1)))
 	{
@@ -16,8 +17,10 @@ size_t custom_getline(char **streamer)
 		{
 			return (-1);
 		}
-		buffer[a] = '\0';
-		while (buffer[numbo] != '\0')
+		if (a == 0 && buff_s == 0)
+			break;
+		buffer[buff_s + a] = '\0';
+		while (numbo < buff_s + a)
 		{
 			if (buffer[numbo] == '\n')
 			{
@@ -30,14 +33,14 @@ size_t custom_getline(char **streamer)
 			a++;
 			*streamer = malloc(sizeof(char) * a);
 			*streamer = custom_strcopy(*streamer, buffer);
-			s = a;
+			buff_s = a;
 			tok1 = 1;
 		}
 		else
 		{
-			s = s + a;
+			buff_s = buff_s + a;
 			*streamer = custom_stringcat(*streamer, buffer);
 		}
 	}
-	return (s);
+	return (buff_s);
 }
