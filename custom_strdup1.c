@@ -1,8 +1,8 @@
 #include "shell.h"
 
 /**
- * c_strdup - duplicate string
- * @str: string
+ * custom_strdup - duplicate string
+ * @string: string
  * Return: pointer
  */
 char *custom_strdup(char *string)

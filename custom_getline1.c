@@ -10,7 +10,7 @@ size_t custom_getline(char **streamer)
 	ssize_t a = 0, s = 0, tok1 = 0, tok2 = 0, numbo = 0;
 	char buffer[1024];
 
-	while(tok2 == 0 && (a = read(STDIN_FILENO, buffer, 1024 -1)))
+	while (tok2 == 0 && (a = read(STDIN_FILENO, buffer, 1024 - 1)))
 	{
 		if (a == -1)
 		{

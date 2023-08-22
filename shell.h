@@ -23,7 +23,7 @@ typedef struct list
 	char *var;
 	struct list *next;
 
-}list_t;
+} list_t;
 
 int execute_cmd(char **tok, list_t *env, int number, char **cmd);
 char *no_space(char *string);
@@ -35,7 +35,7 @@ char *custom_stringcat(char *d, char *sr);
 int cd_setenv(list_t **env, char *n, char *d);
 void cd_home(list_t *env, char *cur);
 int execute_cmd_cd(list_t *env, char *cur, char *d, char *string, int number);
-int custom_cd (char **string, list_t *env, int number);
+int custom_cd(char **string, list_t *env, int number);
 void *custom_realloc(void *p, unsigned int old_s, unsigned int n_s);
 size_t custom_getline(char **streamer);
 int custom_strncmp(char *str1, char *str2);
@@ -49,7 +49,7 @@ char *custom_wh(char *string, list_t *env);
 int custom_size(char *string, char delimet);
 char **cust_tok(char *string, char *delimet);
 list_t *envir_list(char **env);
-int custom_envbuiltin( char **string, list_t *env);
+int custom_envbuiltin(char **string, list_t *env);
 void free_dp(char **arr);
 char *custom_duplicate(char *string, int bytes);
 char *custom_look_env(char *name, list_t *env);

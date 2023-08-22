@@ -1,7 +1,7 @@
 #include "shell.h"
 
 /**
- * strcopy - copies a string
+ * custom_strcopy - copies a string
  * @d: string to be copied to
  * @s: string to copy to
  * Return: original string

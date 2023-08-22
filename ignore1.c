@@ -27,7 +27,7 @@ char *no_space(char *string)
  * contd - eof
  * @i: chars read
  * @cmd: command
- * @envir: environment
+ * @env: environment
  */
 void contd(int i, char *cmd, list_t *env)
 {

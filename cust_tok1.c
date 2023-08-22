@@ -40,7 +40,7 @@ char **cust_tok(char *string, char *delimet)
 	{
 		return (NULL);
 	}
-	while(string[e] != '\0')
+	while (string[e] != '\0')
 		e++;
 	while (b < e)
 	{
@@ -60,5 +60,5 @@ char **cust_tok(char *string, char *delimet)
 		b++;
 	}
 	tokenizer[a] = NULL;
-	return(tokenizer);
+	return (tokenizer);
 }

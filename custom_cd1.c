@@ -86,7 +86,7 @@ int execute_cmd_cd(list_t *env, char *cur, char *d, char *string, int number)
  * @number: n command
  * Return: 0
  */
-int custom_cd (char **string, list_t *env, int number)
+int custom_cd(char **string, list_t *env, int number)
 {
 	char *cur = NULL, *d = NULL;
 	int ext_status = 0;

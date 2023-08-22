@@ -2,8 +2,11 @@
 
 /**
  * execute_cmd - executes command from user input
- * @command: cmd to be executed
- * @custom_getenv: custom getenv
+ * @tok: cmd to be executed
+ * @env: custom getenv
+ * @number: num
+ * @cmd: cmd line
+ * Return: a
  */
 int execute_cmd(char **tok, list_t *env, int number, char **cmd)
 {

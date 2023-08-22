@@ -21,7 +21,7 @@ void cannot_change(char *string, int num, list_t *env)
 	write(STDOUT_FILENO, ": ", 2);
 	numbo = int_transfer(num);
 	c = 0;
-	while(numbo[c] != '\0')
+	while (numbo[c] != '\0')
 	{
 		c++;
 	}
@@ -78,6 +78,7 @@ void invalid_num(char *string, int num, list_t *env)
  * havent_found - error
  * @string: cmd
  * @num: n cmd
+ * @env: env
  * Return: env var
  */
 void havent_found(char *string, int num, list_t *env)

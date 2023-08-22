@@ -3,7 +3,8 @@
 /**
  * custom_realloc - custom implementation of realloc
  * @p: pointer
- * @size: size of p
+ * @n_s: size of p
+ * @old_s: old size
  * Return: NULL
  */
 void *custom_realloc(void *p, unsigned int old_s, unsigned int n_s)

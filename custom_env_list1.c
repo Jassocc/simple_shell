@@ -24,7 +24,7 @@ list_t *envir_list(char **env)
  * @env: environment
  * Return: 0
  */
-int custom_envbuiltin( char **string, list_t *env)
+int custom_envbuiltin(char **string, list_t *env)
 {
 	free_dp(string);
 	my_printf(env);

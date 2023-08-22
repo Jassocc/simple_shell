@@ -42,7 +42,7 @@ char *ign_d(char *string, char delimet)
 }
 /**
  * custom_strtok - custom implementation of strtok
- * @s: string to tokenize
+ * @string: string to tokenize
  * @del: delimeter sstring
  * Return: pointer to next token;
  */

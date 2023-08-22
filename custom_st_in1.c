@@ -57,8 +57,7 @@ char *int_transfer(int lumbo)
 			a++;
 		}
 		else
-		{
-			results[a] = (dig / ts) + '0';
+		{	results[a] = (dig / ts) + '0';
 			a++;
 		}
 		dig %= ts;

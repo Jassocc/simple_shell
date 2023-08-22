@@ -35,7 +35,7 @@ char *custom_duplicate(char *string, int bytes)
 	return (dup);
 }
 /**
- * custom_getenv - implementation of getenv
+ * custom_look_env - implementation of getenv
  * @name: eviron var name
  * @env: env vasriables
  * Return: value

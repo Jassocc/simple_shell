@@ -15,7 +15,7 @@ int main(int ac, char **argv, char **env)
 }
 /**
  * print_prompt - prints promps
- * @en: env variables
+ * @envir: env variables
  * Return: 0
  */
 int print_prompt(char **envir)
@@ -27,8 +27,7 @@ int print_prompt(char **envir)
 	char **tok;
 
 	env = envir_list(envir);
-	do
-	{
+	do {
 		cl_n++;
 		if (isatty(STDIN_FILENO))
 			write(STDOUT_FILENO, "$ ", 2);
@@ -56,7 +55,6 @@ int print_prompt(char **envir)
 		if (ext_status)
 			continue;
 		ext_status = custom_execve(tok, env, cl_n);
-	}
-	while (1);
+	} while (1);
 	return (ext_status);
 }
