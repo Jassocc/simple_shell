@@ -22,7 +22,7 @@ void exit_builtin(char *command[], int *should_exit_ptr)
 	}
 	else
 	{
-		/*/exit(0);*/
+		/*exit(0);*/
 	exit_shell(should_exit_ptr);
 	}
 }
