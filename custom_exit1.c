@@ -20,7 +20,7 @@ int exit_builtin(char **string, list_t *env, int number, char **cmd)
 	{
 		invalid_num(string[1], number, env);
 		free_dp(string);
-		return (2);
+		return (1);
 	}
 	free_dp(string);
 	free_list(env);
